@@ -1,0 +1,40 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/tiktok-exchange"
+  to = "/.netlify/functions/tiktok-exchange"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/tiktok-auth"
+  to = "/.netlify/functions/tiktok-auth"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/tiktok-refresh"
+  to = "/.netlify/functions/tiktok-refresh"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/tiktok/callback"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Max-Age = "86400"
